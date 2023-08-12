@@ -1,0 +1,10 @@
+{
+    "hello": {
+        "title": "! Hola mundo !",
+        "description": "Construyamos una aplicación con Next.js"
+    },
+    "params": {
+        "title": "¡ Pagina con parámetros !",
+        "description": "Buscaste por el identificador: {id}"
+    }
+}

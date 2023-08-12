@@ -1,8 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Sobre el proyecto
 
-## Getting Started
+Este proyecto trata de crear un sistema de traducciones exclusivo en el servidor.
 
-First, run the development server:
+La función **getDictionary** expone una función la cual retorna una función para obtener la clave de traducción.
+
+Hemos de pasar la clave de traducción la cual se genera de forma automática leyendo los tipos de archivo de traducción y opcionalmente, como segundo parámetro un objeto con los posibles variables de traducción.
+
+Utilizamos la librería [intl-messageformat](https://formatjs.io/docs/intl-messageformat/) para las traducciones la cual soporta plurales y selectores
+
+Primero, ejecuta el servidor de desarrollo:
 
 ```bash
 npm run dev
@@ -12,23 +18,25 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Configurando el idioma por defecto
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Para configurar el idioma por defecto solamente deberemos entrar el el fichero i18n-config y modificar la propiedad defaultLocale
 
-## Learn More
+## Añadiendo un nuevo idioma
 
-To learn more about Next.js, take a look at the following resources:
+Para añadir un nuevo idioma deberemos crear un nuevo fichero con el nombre del idioma deseado dentro del directorio dictionaries
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ej: pt.json
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Una vez creado añadir las mismas claves de traducción que ya poseen todos tus ficheros de traducción
 
-## Deploy on Vercel
+Dentro del fichero index.ts en el objeto dictionaries añadir su correspondiente código e importar el fichero de traducciones ( Importante que el código del idioma sea válido )
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Y por ultimo dentro de fichero i18n-config en la propiedad locales un nuevo registro al array, este ultimo paso se realiza para que el middleware tenga registrado los idiomas aceptados y no se intente acceder a un idioma no soportado por la aplicación
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Agradecimientos
+
+- [intl-messageformat](https://formatjs.io/docs/intl-messageformat/)
+- [next-i18n-routing](https://github.com/vercel/next.js/tree/canary/examples/app-dir-i18n-routing)
