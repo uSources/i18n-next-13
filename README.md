@@ -4,9 +4,9 @@ Este proyecto trata de crear un sistema de traducciones exclusivo en el servidor
 
 La función **getDictionary** expone una función la cual retorna una función para obtener la clave de traducción.
 
-Hemos de pasar la clave de traducción la cual se genera de forma automática leyendo los tipos de archivo de traducción y opcionalmente, como segundo parámetro un objeto con los posibles variables de traducción.
+Hemos de pasar la clave de traducción la cual se genera de forma automática leyendo los tipos de archivo de traducción y opcionalmente, como segundo parámetro, un objeto con los posibles variables de traducción.
 
-Utilizamos la librería [intl-messageformat](https://formatjs.io/docs/intl-messageformat/) para las traducciones la cual soporta plurales y selectores
+Utilizamos la librería [intl-messageformat](https://formatjs.io/docs/intl-messageformat/) para las traducciones la cual soporta plurales y selectores.
 
 Primero, ejecuta el servidor de desarrollo:
 
@@ -22,19 +22,21 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver el 
 
 ## Configurando el idioma por defecto
 
-Para configurar el idioma por defecto solamente deberemos entrar el el fichero i18n-config y modificar la propiedad defaultLocale
+Para configurar el idioma por defecto solamente deberemos entrar el el fichero [i18n-config](./i18n-config.ts) y modificar la propiedad **defaultLocale**
 
 ## Añadiendo un nuevo idioma
 
-Para añadir un nuevo idioma deberemos crear un nuevo fichero con el nombre del idioma deseado dentro del directorio dictionaries
+Para añadir un nuevo idioma deberemos crear un nuevo fichero con el nombre del idioma deseado dentro del directorio [dictionaries](./dictionaries)
 
+```
 ej: pt.json
+```
 
-Una vez creado añadir las mismas claves de traducción que ya poseen todos tus ficheros de traducción
+Una vez creado añadir las mismas claves de traducción que ya poseen todos tus ficheros de traducción.
 
-Dentro del fichero index.ts en el objeto dictionaries añadir su correspondiente código e importar el fichero de traducciones ( Importante que el código del idioma sea válido )
+Dentro del fichero [index](./dictionaries/index.ts) en el objeto dictionaries añadir su correspondiente código e importar el fichero de traducciones ( Importante que el código del idioma sea válido )
 
-Y por ultimo dentro de fichero i18n-config en la propiedad locales un nuevo registro al array, este ultimo paso se realiza para que el middleware tenga registrado los idiomas aceptados y no se intente acceder a un idioma no soportado por la aplicación
+Y por ultimo dentro de fichero [i18n-config](./i18n-config.ts) en la propiedad **locales** un nuevo elemento al array, este ultimo paso se realiza para que el [middleware](./middleware.ts) tenga registrado los idiomas aceptados y no se intente acceder a un idioma no soportado por la aplicación
 
 ## Agradecimientos
 
